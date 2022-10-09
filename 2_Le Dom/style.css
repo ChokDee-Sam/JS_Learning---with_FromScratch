@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    /* pour les input et autres, placer ici la font-family */
+    font-family: sans-serif;
+    list-style: none;
+}
+
+body {
+    text-align: center;
+    margin: 0;
+    color: white;
+    min-height: 200vh;
+}
+
+h4 {
+    font-size: 60px;
+}
+
+.box {
+    border: white solid 6px;
+    transition: 0.25s ease;
+    background: teal;
+    padding: 20px;
+}
+
+p {
+    visibility: hidden;
+    width: 240px;
+    margin: 10px auto;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+    margin: 8px;
+}
