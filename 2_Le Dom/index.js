@@ -190,7 +190,7 @@ window.addEventListener("load", () => {
 // Attention : uniquement pour plusieurs elementS
 // const boxes = document.getElementsByClassName("box");
 // getElementsByClassName cause des problèmes
-const boxes = document.querySelectorAll('.box');
+const boxes = document.querySelectorAll(".box");
 
 // console.log(boxes);
 
@@ -199,10 +199,79 @@ const boxes = document.querySelectorAll('.box');
 //     boxes.style.backgroundColor = 'white';
 // })
 
-
+//  NOS CLICK font RETRECIR
 // boxes.forEach((box) => {
 //     box.addEventListener("click",
 //         (e) => {
 //             e.target.style.transform = "scale(0.7)";
 //         });
 // });
+
+// --------------------------
+// BOM
+// --------------------------
+
+// Donne la hauteur de la fenetre
+console.log(window.innerHeight);
+
+// donne la position Y lors de refresh de page
+console.log(window.scrollY);
+
+// ouvre une fenêtre
+// window.open("http://google.com", "cours JS", "height=300px width=3000px");
+
+// ferme une fenêtre
+// window.close()
+
+// Pop Up Alerte
+// alert('WOOOOOOOOOOOOOOOO')
+
+// Exemple double Pop-Up
+btn1.addEventListener("click", () => {
+    // Donne le choix entre 2 réponses
+    confirm("T'es sûr de ta connerie ?");
+    // Ne donne qu'un seul choix
+    alert("Trop tard ^^");
+});
+
+// Exemple avec PROMPT
+let answer;
+monContainer = document.querySelector(".click-event");
+
+btn3.addEventListener("click", () => {
+    answer = prompt("Quel est ton nom ?");
+
+    // Supprime tout le contenu pour le remplacer
+
+    // S'ajoute au contenu initial
+    monContainer.innerHTML += "<H1>Bravo " + answer + "</H1>";
+});
+
+// --------------------------
+// TIMING
+// --------------------------
+
+// Un delay avant une action
+setTimeout(() => {
+    monContainer.style.border = "10px solid white";
+}, 2000);
+
+// une action boucle avec un delay
+// on crée ça dans une Variable
+// let interval = setInterval(() => {
+//     document.body.innerHTML +=
+//         "<div class='box'> <h5>Nouvelle Boite !</h5> </div>";
+// }, 1000);
+
+// Dans le DOM, on crée un event au click
+// document.body.addEventListener("click", (e) => {
+// on va chercher l'info d'où on a cliqué
+// console.log(e.target);
+// On arrête la boucle présent dans le Variable
+//     clearInterval(interval);
+// });
+
+//Supprime à chaque click un element pointé
+// document.body.addEventListener('click', (e) => {
+//     e.target.remove()
+// })

@@ -3,6 +3,24 @@
 
 - CamelCase pour des propriétés CSS avec des tirets
 
-- pas besoin de mettre de points de classe quand on utilise une classlist
+- Pas besoin de mettre de points de classe quand on utilise une classlist
 
-- en rajout de style, si le style est deja existant, il vient écraser l'ancien > ajouter les styles dans l'ajout JS
+- En rajout de style, si le style est deja existant, il vient écraser l'ancien > ajouter les styles dans l'ajout JS
+
+- Le Bubbling (paramètre de base de l'EventListerner)
+    => Se déclenche à la fin
+        => ne rien ajouter, il est par défaut sur false
+
+- Le Usecapture (paramètre modifié)
+    => Se déclenche avant tout le monde
+        => Ajouter true
+
+- stopPropagation
+    => Permet de stopper des ordres, en laissant passer certains
+        const.addEventListener('click', (e) => {
+            alert('test');
+            e.stopPropagation();
+        })
+
+. removeEventListener
+    => Retire un Event
