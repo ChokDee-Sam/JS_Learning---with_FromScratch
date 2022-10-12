@@ -275,3 +275,37 @@ setTimeout(() => {
 // document.body.addEventListener('click', (e) => {
 //     e.target.remove()
 // })
+
+// --------------------------
+// LOCATION
+// --------------------------
+
+// console.log(location);
+// console.log(location.href);
+// console.log(location.host);
+// console.log(location.pathname);
+// console.log(location.search);
+// location.replace("https://www.google.fr/");
+
+// --------------------------
+// NAVIGATOR
+// --------------------------
+// console.log(navigator.userAgent)
+// console.log(Geolocation)
+// voir doc
+
+// --------------------------
+// HISTORY
+// --------------------------
+// console.log(history);
+// window.history.back();
+// history.go(-2)
+
+// ----------------------------------------------------------
+// --------------------------
+// SET PROPERTY
+// --------------------------
+window.addEventListener('mousemove', (e) => {
+    nav.style.setProperty("--x", e.layerX + "px");
+    nav.style.setProperty("--y", e.layerY + "px");
+})
