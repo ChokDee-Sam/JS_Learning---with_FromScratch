@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Le Dom</title>
         <link rel="stylesheet" href="style.css" />
+        <!-- Script JS -->
+        <script defer src="index.js"></script>
     </head>
     <body>
         <div class="click-event box">
@@ -16,11 +18,42 @@
             <p>Bonne réponse</p>
         </div>
 
-        <div class="mouse-move">
+        <!--  -->
+        <div class="mouse-move"></div>
 
+        <!-- keypress event -->
+        <div class="keypress box">
+            <h2>
+                Vous appuyez sur la touche :
+                <span id="key"></span>
+            </h2>
         </div>
 
-        <!-- Script JS -->
-        <script src="index.js"></script>
+        <!-- scroll event -->
+        <nav>
+            <ul>
+                <li>Navigation 1</li>
+                <li>Navigation 2</li>
+                <li>Navigation 3</li>
+            </ul>
+        </nav>
+
+        <!-- form event -->
+        <form action="" class="box">
+            <input type="text" placeholder="Entrez votre nom" />
+            <select>
+                <option value="">Selectionner votre langage préféré</option>
+                <option value="Javascript">Javascript</option>
+                <option value="PHP">PHP</option>
+                <option value="Python">Python</option>
+            </select>
+
+            <input type="checkbox" name="" id="cgv">
+            <label for="cgv">Accepter les CGV</label>
+
+            <input type="submit" value="Valider" />
+
+            <div></div>
+        </form>
     </body>
 </html>

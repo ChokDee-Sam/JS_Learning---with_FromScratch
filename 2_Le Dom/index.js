@@ -1,6 +1,6 @@
-// *********************************************
+// --------------------------
 // SELECTEURS
-// *********************************************
+// --------------------------
 
 // selectionner
 // document.querySelector("p");
@@ -14,9 +14,9 @@
 // Utiliser cette variable qui selectionne pour changer
 // reponse.style.visibility = "visible";
 
-// *********************************************
+// --------------------------
 // CLICK EVENT
-// *********************************************
+// --------------------------
 
 // création d'une fonction de bonne réponse dans Console + visible
 function bonneReponseFunction() {
@@ -48,10 +48,11 @@ btn2.addEventListener("click", () => {
 // Où               Quoi       Event         Comment
 btn3.addEventListener("click", bonneReponseFunction);
 
-// *********************************************
+// --------------------------
 // MOUSE EVENT
-// *********************************************
+// --------------------------
 
+// on dit que cette Var sera la selection du bloc mouse-move
 const mouseMove = document.querySelector(".mouse-move");
 
 // Prend les coordonnées X et Y pour mettre cette info dans style
@@ -73,3 +74,61 @@ window.addEventListener("mouseup", () => {
 });
 
 // Events autres : mouseenter / mouseout / mouseover
+
+// --------------------------
+// --------------------------
+// KEYPRESS EVENT
+// --------------------------
+// --------------------------
+
+const keypressContainer = document.querySelector(".keypress");
+const key = document.getElementById("key");
+
+const ring = (key) => {
+    // on lui donne une instruction native
+    const audio = new Audio();
+    // on lui dit que le nom du mp3 sera une touche + .mp3
+    audio.src = key + ".mp3";
+    // audio.src =  "z.mp3"; exemple sans touche
+    // et on lance une "fonction native" ?
+    audio.play();
+};
+
+// Dans le DOM, on lance un event de pression de touche
+// qui donnera les infos dans la console
+document.addEventListener("keypress", (e) => {
+    // Key rajoute du textem avec l'information key
+    // (contenue dans la liste d'infos de console)
+    key.textContent = "Tu appuies sur " + e.key;
+
+    // si la touche écrite est A
+    if (e.key === "A") {
+        btn3.style.background = "crimson";
+    }
+
+    ring(e.key);
+});
+
+// --------------------------
+// --------------------------
+// SCROLL EVENT
+// --------------------------
+// --------------------------
+
+// on declare la nav
+const nav = document.querySelector("nav");
+
+// Event au scroll à la racine window
+window.addEventListener("scroll", () => {
+    // pour  voir afficher le nombre de pixels
+    console.log(window.scrollY);
+
+    // si le nombre de pixels est supérieur à
+    if (window.scrollY > 330) {
+        nav.style.top = "0px";
+        // sinon
+    } else {
+        nav.style.top = "-50px";
+    }
+});
+
