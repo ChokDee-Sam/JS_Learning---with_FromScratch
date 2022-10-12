@@ -4,7 +4,7 @@
     font-family: sans-serif;
     list-style: none;
     padding: 0;
-    /* margin: 0; */
+    margin: 0;
 }
 
 body {
@@ -136,4 +136,5 @@ ul {
     align-items: center;
     justify-content: space-around;
     padding: 0;
+    height: inherit;
 }

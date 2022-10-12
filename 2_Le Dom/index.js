@@ -132,3 +132,77 @@ window.addEventListener("scroll", () => {
     }
 });
 
+// --------------------------
+// FORM EVENT
+// --------------------------
+
+const inputName = document.querySelector('input[type="text"]');
+const select = document.querySelector("select");
+const form = document.querySelector("form");
+
+let pseudo = "";
+let language;
+
+inputName.addEventListener("input", (e) => {
+    pseudo = e.target.value;
+});
+
+select.addEventListener("input", (e) => {
+    language = e.target.value;
+});
+
+form.addEventListener("submit", (e) => {
+    // permet de ne pas recharger la page
+    e.preventDefault();
+
+    // le JS gère nativement "checked"
+    if (cgv.checked) {
+        // on injecte du HTML dans la div qui était vide
+        document.querySelector("form > div").innerHTML = `
+        <h5>Pseudo : ${pseudo}</h5>
+        <h5> Language préféré : ${language} </h5>
+        `;
+    } else {
+        alert("Veuillez accepter les CGV bande de canards");
+    }
+});
+
+// inputName.addEventListener("click", (e) => {
+//     console.log(e);
+// });
+
+// --------------------------
+// LOAD EVENT
+// --------------------------
+
+// Créé un Event après chargement total de la page
+window.addEventListener("load", () => {
+    console.log("document load");
+});
+
+// --------------------------
+//
+
+// --------------------------
+// FOR EACH
+// --------------------------
+
+// Attention : uniquement pour plusieurs elementS
+// const boxes = document.getElementsByClassName("box");
+// getElementsByClassName cause des problèmes
+const boxes = document.querySelectorAll('.box');
+
+// console.log(boxes);
+
+// Ne fonctionne pas car plusieurs éléments = ForEach
+// boxes.addEventListener('click', () => {
+//     boxes.style.backgroundColor = 'white';
+// })
+
+
+// boxes.forEach((box) => {
+//     box.addEventListener("click",
+//         (e) => {
+//             e.target.style.transform = "scale(0.7)";
+//         });
+// });
