@@ -3,6 +3,7 @@ body {
     overflow: hidden;
     min-height: 100vh;
     cursor: crosshair;
+    position: relative;
 }
 
 h3 {
@@ -29,4 +30,33 @@ h3 {
         opacity: 1;
         filter: hue-rotate(360deg);
     }
+}
+
+
+.mouse {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    /* mix-blend-mode: difference; */
+}
+
+#mouse1 {
+    height: 14px;
+    width: 14px;
+    background-color: yellow;
+    z-index: 30;
+}
+
+#mouse2 {
+    height: 100px;
+    width: 100px;
+    background-color: white;
+    z-index: 20;
+}
+
+#mouse3 {
+    height: 200px;
+    width: 200px;
+    background-color: grey;
+    z-index: 10;
 }
