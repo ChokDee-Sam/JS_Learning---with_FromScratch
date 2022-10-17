@@ -40,7 +40,7 @@ console.log(objet.technos[0][0]);
 
 // Ajouter un index:valeur dans un objet (note: un =)
 objet.sexe = "Homme";
-// si l'index existe deja, l'ancienne valeur est remplacée
+// si l'index existe deja, l'ancienne valeur est remplacée (écrasée)
 
 // Une Variable qui contient un tableau
 // le tableau contient 4 objets, et chaque objets contient 4 index:valeurs
@@ -65,10 +65,12 @@ let data = [
         admin: false,
     },
 ];
-console.log(data[2].pseudo[2]);
+console.log(data[1].pseudo);
+console.log(data[1].pseudo[0]);
 
 // On ne stoque pas d'objets dans un objets, mais dans un tableau
 // Et un tableau abrite des objets
+// Stocker un objet dans un objet serait bizarre, et moins accessible
 
 // -----------------------------------------------
 // Les structures de controle
@@ -92,14 +94,15 @@ data[0].age > data[1].age
 // ------
 let w = 0;
 // console.log(w);
-while (w < 10) {
+while (w < 3) {
     w++;
-    // console.log("La valeur de w est de : " + w);
+    console.log("La valeur de w est de : " + w);
 }
 
 // ---------
 // Do While
 // (une action avant de tester la boucle)
+// FAIS AVANT de TESTER
 // ---------
 let d = 0;
 
@@ -111,16 +114,41 @@ do {
 // ------
 // For
 // ------
-//
-const essai = document.querySelector("h1");
-console.log(essai);
-
-essai.addEventListener("click", () => {
-    essai.style.color = "red";
-});
 
 // // dans la Variable data, qui contient un tableau, qui lui même contient des objets
 // // on va nommer chaque élément individuellement : user
-// for (const user of data) {
-//     document.body.innerHTML += `<li>${user.pseudo}</li>`;
-// }
+for (const user of data) {
+    // Ça va créer une boucle autant de fois qu'il y a d'objets dans data (donc 3)
+    document.body.innerHTML += `<li>${user.pseudo} a ${user.age} ans </li>`;
+    // Et on indique qu'à chaque passage de boucle, on souhaite injecter du html
+    // Un <li> contenant le pseudo de chaque objets
+
+    // les backtick permettent de ne pas écrire la concatenation avec des +
+    // += se rajoute au contenu, afin de ne pas écraser la valeur précédente
+}
+
+// AUTRE BOUCLE FOR
+// ---
+console.log(`la profondeur du tableau est de ${data.length} objets`);
+// data.length est pour connaitre le nombre d'objets
+
+// On déclare une valeur
+// On déclaire la Condition d'arrêt
+// On déclare l'action à réaliser pour chaque tour de boucle
+for (i = 0; i < data.length; i++) {
+    // console.log(i);
+    // affiche le nombre de i à chaque boucle (pas d'interêt)
+
+    // console.log(data)
+    // affiche les 3 même objets à chaque tour de boucle (pas d'interêt)
+
+    console.log(data[i]);
+    // affiche la data de chaque objets, donc un objet par boucle
+
+    console.log(data[i].technos);
+    // Affiche les technos contenu dans un objet à chaque tour
+
+    document.body.innerHTML += "<h2>" + data[i].pseudo + "</h2>";
+    // Ajoute du HTML H2 à chaque tour de boucle
+    // Chaque boucle écris un LI avec le pseudo inclus dans un objet
+}
