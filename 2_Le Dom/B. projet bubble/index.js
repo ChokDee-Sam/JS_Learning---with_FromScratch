@@ -54,11 +54,11 @@ setInterval(bubbleMaker, 300);
 
 
 window.addEventListener('mousemove', (e) => {
-    mouse1.style.top = e.layerY + "px";
-    mouse1.style.left = e.layerX + "px";
-    mouse2.style.top = e.layerY + "px";
-    mouse2.style.left = e.layerX + "px";
-    mouse3.style.top = e.layerY + "px";
-    mouse3.style.left = e.layerX + "px";
+    mouse1.style.top = e.pageY + "px";
+    mouse1.style.left = e.pageX + "px";
+    mouse2.style.top = e.pageY + "px";
+    mouse2.style.left = e.pageX + "px";
+    mouse3.style.top = e.pageY + "px";
+    mouse3.style.left = e.pageX + "px";
 })
 
