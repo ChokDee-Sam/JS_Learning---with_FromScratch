@@ -71,7 +71,6 @@ console.log(data[1].pseudo[0]);
 // On ne stoque pas d'objets dans un objets, mais dans un tableau
 // Donc un tableau abrite des objets
 // Stocker un objet dans un objet serait bizarre, et moins accessible
-//
 
 // -----------------------------------------------
 // Les structures de controle
