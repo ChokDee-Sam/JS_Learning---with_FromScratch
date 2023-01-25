@@ -1,3 +1,18 @@
 #test {
     color: blue;
 }
+
+.nom-De-Classe-CSS {
+    color: white;
+    background-color: teal;
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+    border: 3px solid white;
+    transition: 1.5s;
+}
+
+.nom-De-Classe-CSS:hover {
+    transition: 0.5s;
+    width: 30%;
+}

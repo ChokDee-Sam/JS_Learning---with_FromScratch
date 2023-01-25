@@ -8,37 +8,39 @@
 
 let nombreExemple = 50;
 let phraseExemple = "Javascript est un langage orienté objet";
-console.log(typeof string2);
+console.log(typeof nombreExemple);
 
-// ce calcul va devenir une String en concatenant le tout
+// Transforme le Number en String
 console.log(eval("1" + 2));
-// Cette méthode transforme le String en Number
+
+// Transforme le String en Number
 console.log(eval(parseInt("1") + 2));
+
 // Penser à utiliser le typeof pour savoir la nature
 console.log(typeof parseInt("100"));
 
-// Permet de savoir si ce n'est pas un nombre (NOT a NUMBER)
+// Permet de savoir si ce n'est pas un nombre (is NOT a NUMBER)
 console.log(isNaN(phraseExemple));
 
 // Permet de connaitre la longueur/profondeur
 console.log(phraseExemple.length);
+
 // la lenght va de 0 à 38
 console.log(phraseExemple[38]);
-// la variable va de 1 à 39
-// subtilité : il faut donc préciser le -1
-console.log(phraseExemple[phraseExemple.length - 1]);
 
+// la variable va de 1 à 39
 // la LENGHT n'est pas égale à l'index d'un tableau
-// la LENGHT commence à 1 dans une variable
-// La LENGHT commence à 0 dans un tableau (index)
+// subtilité : l'index commence à zéro, et la length à 1
+console.log(phraseExemple[phraseExemple.length - 1]);
 
 // Permet de connaitre l'index d'un mot, ou d'une lettre dans un element
 console.log(phraseExemple.indexOf("orienté"));
+
 // Retourne -1 si inexistant
 console.log(phraseExemple.indexOf("x"));
 
 // Permet de couper le contenu d'un element
-// le chiffre entre parenthese indique le nombre de lettre à retirer
+// le chiffre entre parenthese indique le nombre de lettre à retirer/couper
 let NewPhraseExemple = phraseExemple.slice(2);
 console.log(NewPhraseExemple);
 // Mettre 2 chiffres permet de tout retirer avant et après
@@ -98,8 +100,10 @@ console.log(Math.PI);
 console.log(Math.random());
 // Entre 0 et 50
 console.log(Math.random() * 50);
+
 // Entre 0 et 50 SANS VIRGULE
 console.log(Math.ceil(Math.random() * 50));
+console.log(Math.floor(Math.random() * 50));
 
 // -----------------------------------------------
 // Méthodes ARRAY
@@ -108,5 +112,130 @@ console.log(Math.ceil(Math.random() * 50));
 let array1 = ["Javascript", "Php", "Python"];
 let array2 = ["Ruby", "Solidity"];
 
-let newArray = array1.concat(array2)
+// Fusionne 2 tableaux
+let newArray = array1.concat(array2);
 console.log(newArray);
+
+// Spread Operator
+let newArray2 = [...array1, ...array2];
+console.log(newArray2);
+
+// Permet de créer une chaine de caractère
+// issu des elements du tableau
+// en choisissant comment les joindre
+console.log(array1.join("-"));
+
+// Couper le nombre d'elements de tableau
+console.log(newArray2.slice(2));
+// Coupe ce qu'il y a en dehors de ces 2 chiffres
+// Jusqu'où ça enleve, puis jusqu'où ça garde
+console.log(newArray2.slice(2, 4));
+
+// Trouve l'index du mot qu'on recherche
+console.log(newArray2.indexOf("Javascript"));
+
+// À chaque tour de boucle, enumere chaque element 1 par 1
+array1.forEach((languages) => console.log(languages));
+
+// À chaque tour de boucle, vérifie dans CHAQUE ELEMENT s'il y a un mot/lettre "défini"
+console.log(array1.every((truc) => (truc = "p")));
+console.log(array1.every((truc) => truc === "p"));
+// À chaque tour de boucle, vérifie dans AU MOINS 1 ELEMENT s'il y a un mot/lettre "défini"
+console.log(array1.some((truc) => truc === "Php"));
+
+// Retire le premier index d'un tableau
+console.log(array1);
+let shift = array1.shift();
+console.log(array1);
+
+// Retire le dernier index d'un tableau
+let pop = array1.pop();
+console.log(array1);
+console.log(pop);
+
+// Retire les élements entre un intervale, puis s'ajoute un nouvel element
+console.log(newArray);
+const bidule = newArray.splice(0, 2, "Three.JS");
+console.log(newArray);
+console.log(bidule);
+
+// Retire les élements entre un intervale, puis s'ajoute un nouvel element avec Spread
+const cities = ["Bangkok", "Phuket", "Chiang Mai", "Chiang Rai", "Phayao"];
+console.log(cities);
+const bidule2 = cities.splice(0, 2, ...array2);
+console.log(cities);
+
+// IMPORTANT
+// Calculer le nombre total des éléments
+let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(numeros.reduce((x, y) => x + y));
+
+// Ajouter un element
+numeros.push("Coucou", 17);
+console.log(numeros);
+
+// FILTER
+console.log(numeros.filter((number) => number > 10));
+
+// SORT (trier / classer)
+console.log(numeros.sort());
+console.log(numeros.sort((a, b) => b - a)); // de B vers A
+
+//  FILTER + SORT
+console.log(numeros.filter((number) => number > 5));
+console.log(numeros.filter((number) => number > 5).sort());
+console.log(numeros.filter((number) => number > 5).sort((a, b) => a - b));
+console.log(numeros.filter((number) => number > 5).sort((a, b) => b - a));
+
+// MAP
+numeros.map((a) => console.log(a));
+numeros.map((a) => (document.body.innerHTML = a));
+numeros.map((a) => (document.body.innerHTML += a));
+numeros.map((a) => (document.body.innerHTML += `<li> ${a}</li>`));
+
+// innerHTML + map + join
+document.body.innerHTML = numeros.map((a) => `<li> ${a} </li>`);
+document.body.innerHTML = numeros.map((a) => `<li> ${a} </li>`).join("");
+
+// MAP SUR OBJET
+const data = [
+    {
+        nom: "Robert",
+        age: 20,
+        ville: "Bangkok",
+        admin: false,
+    },
+    {
+        nom: "Adan",
+        age: 40,
+        ville: "Phetchabun",
+        admin: false,
+    },
+    {
+        nom: "Bernard",
+        age: 30,
+        ville: "Chiang Mai",
+        admin: true,
+    },
+];
+
+// InnerHTML + FILTER + INCLUDES + SORT + MAP + JOIN
+document.body.innerHTML += data
+    // .filter((truc) => truc.age >= 30)
+    .filter((truc) => truc.nom.includes("a")) // filtre
+
+    .sort((a, b) => a.age - b.age) // classe / trie
+
+    .map(   // liste
+        (user) =>
+            `
+    <div class ='nom-De-Classe-CSS'>
+        <h2>  ${user.nom} </h2>
+        <p> Age : ${user.age} </p>
+        <p> Ville : ${user.ville} </p>
+        <p> Status : ${user.admin ? "Modérateur" : "Membre"} </p>
+
+    </div>
+            `
+    )
+    .join("");
