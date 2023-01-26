@@ -38,8 +38,15 @@ function generatePassword() {
     affichage.value = resultat.join("");
 
     affichage.select("copy");
-    alert("Le mot de passe a été copié : " + affichage.value);
+    // alert("Le mot de passe a été copié : " + affichage.value);
     resultat = [];
+
+    generateButton.textContent = 'Copié'
+
+    setTimeout( () => {
+        generateButton.textContent = 'Générer un autre mot de passe'
+
+    }, 2000)
 }
 
 generateButton.addEventListener("click", generatePassword);
