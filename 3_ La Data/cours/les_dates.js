@@ -136,3 +136,51 @@ console.log(h3js.dataset.lang);
 
 const h3 = document.querySelectorAll("h3");
 h3.forEach((language) => console.log(language.dataset.lang));
+
+// -----------
+// -------------------------------------
+// LES REGEX // à compléter par un autre formateur
+// -------------------------------------
+// -----------
+
+let mail = "from_sam12345@mail.com";
+
+console.log(mail.search(/from_saM/)); // pas trouvé = -1
+console.log(mail.search(/from_sam/)); // trouvé = 0
+console.log(mail.search(/sam/)); // trouve l'intérieur d'une sequence = num de placement
+
+console.log(mail.replace(/from/, "de")); // remplace
+console.log(mail.replace(/sam/, "mail"));
+
+// Voir Cheat Sheet (sur internet)
+
+// Match le mot en entier
+console.log(mail.match(/SAM/)); // null
+console.log(mail.match(/SAM/i)); // trouvé, i = pas de case sensitive, et renvoi un tableau
+
+// Match les lettres
+console.log(mail.match(/[zu]/)); //nul
+console.log(mail.match(/[liam]/)); //trouve que le m (car premier dans mon mail)
+console.log(mail.match(/[zuao]/)); //trouve qu'un seul element 'o'
+console.log(mail.match(/[21345]/)); //trouve qu'un seul element '1'
+
+// Tous les chiffres
+console.log(mail.match(/\d/)); // trouve le premier chiffre
+
+// Toutes les lettres
+console.log(mail.match(/[a-z]/)); // trouve la premiere lettre
+
+// Multi-Combinaison
+console.log("Multi-Combinaison :");
+console.log(mail.match(/[\w_-]/)); // lettres
+console.log(mail.match(/[\w_-]+@[\w_-]/)); // lettres + @ lettre
+console.log(mail.match(/^[\w_-]+@[\w_-]+\.[a-z]{2,4}$/i)); //
+
+// -----------
+
+// Exemples de séparations plus complexes
+let separator = 123456789;
+console.log(separator);
+console.log(separator.toString());
+console.log(separator.toString().replace("1", "un"));
+console.log(separator.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "));
