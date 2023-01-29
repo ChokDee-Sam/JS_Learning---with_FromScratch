@@ -66,9 +66,11 @@ console.log(dateParser(date));
 console.log(dateParser(iso));
 console.log(dateParser(timestamp));
 
+// -----------
 // -------------------------------------
 // LE DESTRUCTURING (permet d'écrire plus court)
 // -------------------------------------
+// -----------
 
 // Création d'un objet contenant un  tableau
 let moreData = {
@@ -114,8 +116,23 @@ const dateDestructuring = (chaine) => {
 
     let [y, m, d] = newDate; // on crée une variable pour chaque element de tableau
     console.log(d, m, y);
-    
-    let newDateFR = [d, m, y] // on crée une variable contenant un tableau de var dans le bon ordre
-    return newDateFR.join(' / ') // et on les join
+
+    let newDateFR = [d, m, y]; // on crée une variable contenant un tableau de var dans le bon ordre
+    return newDateFR.join(" / "); // et on les join
 };
 console.log(dateDestructuring(iso)); // appel de fonction avec iso en argument
+
+// -----------
+// -------------------------------------
+// LES DATASETS
+// -------------------------------------
+// -----------
+
+//On peut récupérer la data qu'on a mis dans notre HTML
+
+const h3js = document.getElementById("javascript");
+console.log(h3js.dataset);
+console.log(h3js.dataset.lang);
+
+const h3 = document.querySelectorAll("h3");
+h3.forEach((language) => console.log(language.dataset.lang));
