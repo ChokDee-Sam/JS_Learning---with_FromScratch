@@ -136,3 +136,38 @@ inputs.forEach((element) => {
 // -----------------------------------------------------------------
 // -----------------------------------------------------------------
 
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (pseudo && email && password && confirmPass) {
+        const data = {
+            pseudo,
+            email,
+            password,
+
+            // Pas besoin d'écrire tout ça
+            // pseudo: pseudo,
+            // email: email,
+            // password: password,
+        };
+        console.log(data);
+        alert("Inscription validée !");
+
+        inputs.forEach((input) => (input.value = ""));
+
+        pseudo = null;
+        email = null;
+        password = null;
+        confirmPass = null;
+
+        progressBar.classList = ''
+        
+    } else {
+        alert("Veuillez remplir correctement les champs de formulaire.");
+    }
+});
+
+// -----------------------------------------------------------------
+// -----------------------------------------------------------------
