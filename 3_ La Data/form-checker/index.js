@@ -5,6 +5,7 @@
 const inputs = document.querySelectorAll(
     'input[type="text"], input[type="password"]'
 );
+const progressBar = document.getElementById("progress-bar");
 let pseudo, email, password, confirmPass; // initialisation
 
 console.log(inputs);
@@ -63,12 +64,46 @@ const emailChecker = (value) => {
 // -----------------------------------------------------------------
 // -----------------------------------------------------------------
 
-const passwordChecker = (value) => {};
+const passwordChecker = (value) => {
+    progressBar.classList = ""; // plus court que plusieurs .remove()
+
+    if (
+        !value.match(
+            /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/
+        )
+    ) {
+        errorDisplay(
+            "password",
+            "Minimum de 8 caractères, une majuscule, un chiffre et un caractère spécial"
+        );
+
+        progressBar.classList.add("progressRed");
+        password = null;
+    } else if (value.length < 12) {
+        progressBar.classList.add("progressBlue");
+        errorDisplay("password", "", true);
+        password = value;
+    } else {
+        progressBar.classList.add("progressGreen");
+        errorDisplay("password", "", true);
+        password = value;
+    }
+
+    if (confirmPass) confirmChecker(confirmPass);
+};
 
 // -----------------------------------------------------------------
 // -----------------------------------------------------------------
 
-const confirmChecker = (value) => {};
+const confirmChecker = (value) => {
+    if (value !== password) {
+        errorDisplay("confirm", "Les mots de passe ne correspondent pas");
+        confirmPass = false;
+    } else {
+        errorDisplay("confirm", "", true);
+        confirmPass = true;
+    }
+};
 
 // -----------------------------------------------------------------
 // -----------------------------------------------------------------
@@ -97,3 +132,7 @@ inputs.forEach((element) => {
         }
     });
 });
+
+// -----------------------------------------------------------------
+// -----------------------------------------------------------------
+
