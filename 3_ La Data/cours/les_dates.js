@@ -174,7 +174,7 @@ console.log(mail.match(/[a-z]/)); // trouve la premiere lettre
 console.log("Multi-Combinaison :");
 console.log(mail.match(/[\w_-]/)); // lettres
 console.log(mail.match(/[\w_-]+@[\w_-]/)); // lettres + @ lettre
-console.log(mail.match(/^[\w_-]+@[\w_-]+\.[a-z]{2,4}$/i)); //
+console.log(mail.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)); //
 
 // -----------
 
