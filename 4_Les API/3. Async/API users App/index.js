@@ -36,5 +36,10 @@ const userDisplay = async () => {
     for (let i = 0; i < userData.length; i++) {
         document.body.innerHTML += `<h3> ${userData[i].location.city}</h3>`;
     }
+
+    // avec Boucle For Of
+    for (const element of userData) {
+        document.body.innerHTML += `<h3> ${element.gender}</h3>`;
+    }
 };
 userDisplay();
