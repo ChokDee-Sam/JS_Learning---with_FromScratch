@@ -18,10 +18,14 @@ const fetchUser = async () => {
 
 // fetchUser()
 console.log(userData); // undefined
+
 // ----------------------------------------------------------
 
 const userDisplay = async () => {
     await fetchUser();
+
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
 
     const dateParser = (date) => {
         let newDate = new Date(date).toLocaleDateString("fr-TH", {
@@ -32,6 +36,20 @@ const userDisplay = async () => {
         return newDate;
     };
 
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
+
+    const dayCalc = (date) => {
+        let today = new Date();
+        let todayTimestamp = Date.parse(today);
+        let timestamp = Date.parse(date);
+
+        return (todayTimestamp - timestamp) / 8.64e7;
+    };
+
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
+
     // Avec .map()
     document.body.innerHTML = userData
         .map(
@@ -40,13 +58,13 @@ const userDisplay = async () => {
                 <div class="card">
                 <img src=${user.picture.large}
                         alt="photo de ${user.name.first}">
-                <h3>${user.name.first} </h3>
+                <h3>${user.name.first} ${user.name.last} </h3>
                 <p>${user.location.city}, ${dateParser(user.dob.date)} </p>
 
                 <em> 
-                Membre depuis : ${
+                Membre depuis : ${dayCalc(
                     user.registered.date
-                }jours</em>                
+                )}jours</em>                
                 </div>
                 `
         )
