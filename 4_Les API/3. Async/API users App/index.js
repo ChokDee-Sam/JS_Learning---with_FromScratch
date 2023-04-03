@@ -31,5 +31,10 @@ const userDisplay = async () => {
                 `
         )
         .join("");
+
+    // avec Boucle For
+    for (let i = 0; i < userData.length; i++) {
+        document.body.innerHTML += `<h3> ${userData[i].location.city}</h3>`;
+    }
 };
 userDisplay();
