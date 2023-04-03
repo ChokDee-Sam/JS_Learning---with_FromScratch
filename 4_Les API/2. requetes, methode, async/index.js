@@ -37,7 +37,7 @@ const init2 = {
     headers: {
         "Content-Type": "application/json",
     },
-    body: JSON.stringify({
+    body: ({
         pseudo: "Sam",
         message: `HeyHeyHey !!`,
     }),
