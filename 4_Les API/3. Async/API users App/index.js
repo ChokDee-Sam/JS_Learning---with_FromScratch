@@ -16,9 +16,7 @@ const fetchUser = async () => {
     console.log(userData[0]);
 };
 
-// fetchUser()
-console.log(userData); // undefined
-
+// ----------------------------------------------------------
 // ----------------------------------------------------------
 
 const userDisplay = async () => {
