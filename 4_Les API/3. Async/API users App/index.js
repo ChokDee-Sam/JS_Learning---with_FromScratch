@@ -44,7 +44,7 @@ const userDisplay = async () => {
         let todayTimestamp = Date.parse(today);
         let timestamp = Date.parse(date);
 
-        return (todayTimestamp - timestamp) / 8.64e7;
+        return Math.ceil((todayTimestamp - timestamp) / 8.64e7);
     };
 
     // ----------------------------------------------------------
@@ -64,7 +64,7 @@ const userDisplay = async () => {
                 <em> 
                 Membre depuis : ${dayCalc(
                     user.registered.date
-                )}jours</em>                
+                )} jours</em>                
                 </div>
                 `
         )
