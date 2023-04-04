@@ -1,0 +1,77 @@
+// ---------------------------------------------------
+// ---------------------------------------------------
+// ---------------------------------------------------
+
+// 1 - Définir la localisation du formulaire, de l'input, et des résultats
+// 2 - Définir une variable vide, qui contiendra nos futurs résultats Fetch
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+const result = document.getElementById("result");
+
+let meals = [];
+
+// ---------------------------------------------------
+// ---------------------------------------------------
+// ---------------------------------------------------
+
+// 3 - Récupérer la value écrite dans l'Input
+// 4 - Call la fonction de Fetch, avec la value de l'input en paramètre
+// 5 - Stocker le résultat de cette fonction dans une Variable
+// 6 - Afficher le contenu de cette variable (dans la console)
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+input.addEventListener("input", (e) => {
+    fetchMeals(e.target.value);
+
+});
+
+async function fetchMeals(search) {
+    await fetch(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
+    ) // Avec propriété
+        .then((res) => res.json())
+        .then((data) => (meals = data.meals))
+        .then(mealsDisplay());
+  
+    console.log(meals);
+}
+
+// ---------------------------------------------------
+// ---------------------------------------------------
+// ---------------------------------------------------
+
+// 7 - À chaque Submit du Form, ne pas rafraîchir la page
+// 8 - Call la fonction qui affichera le contenu de page (résultats du fetch)
+// 9 - Cette variable devra afficher une mise en page définie par le CSS
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// ---------------------------------------------------
+// ---------------------------------------------------
+// ---------------------------------------------------
+
+// 10 - Définir précisément notre fonction d'affichage de contenu
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+function mealsDisplay() {
+    if (meals === null) {
+        result.innerHTML = "<h2>Aucun résultat</h2>";
+
+    }
+}
+// ---------------------------------------------------
+// ---------------------------------------------------
+// ---------------------------------------------------
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
