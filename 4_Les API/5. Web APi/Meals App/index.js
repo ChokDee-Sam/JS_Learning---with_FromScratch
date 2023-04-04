@@ -28,7 +28,6 @@ let meals = [];
 
 input.addEventListener("input", (e) => {
     fetchMeals(e.target.value);
-
 });
 
 async function fetchMeals(search) {
@@ -36,9 +35,8 @@ async function fetchMeals(search) {
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`
     ) // Avec propriété
         .then((res) => res.json())
-        .then((data) => (meals = data.meals))
-        .then(mealsDisplay());
-  
+        .then((data) => (meals = data.meals));
+
     console.log(meals);
 }
 
@@ -65,7 +63,34 @@ async function fetchMeals(search) {
 function mealsDisplay() {
     if (meals === null) {
         result.innerHTML = "<h2>Aucun résultat</h2>";
+    } else {
+        meals.length = 12; // permet de limiter le nombre de résultats affichés
 
+        result.innerHTML = meals
+            .map((element) => {
+                let ingredientsAndMeasures = [];
+
+                for (let i = 1; i < 21; i++) {
+                    if (element[`strIngredient${i}`]) {
+                        let ingredient = element[`strIngredient${i}`];
+                        let measure = element[`strMeasure${i}`];
+
+                        ingredientsAndMeasures.push(
+                            `<li> ${ingredient} --- ${measure}</li>`
+                        );
+                    }
+                }
+
+                return `
+    <li class="card">
+      <h2>${element.strMeal}</h2>
+      <p>${element.strArea}</p>
+      <img src=${element.strMealThumb} alt="photo ${element.strMeal}">
+      <ul>${ingredientsAndMeasures.join("")}</ul>
+    </li>
+    `;
+            })
+            .join("");
     }
 }
 // ---------------------------------------------------
@@ -74,4 +99,5 @@ function mealsDisplay() {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    mealsDisplay();
 });
