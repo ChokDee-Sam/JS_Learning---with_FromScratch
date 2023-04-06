@@ -1,0 +1,6 @@
+Éviter les fonction Arrow
+
+Les prototypes ont plein de méthodes possibles
+(voir dans la console dev tool)
+
+Les fonctions dans le prototype sont plus rapide (environ 30%)
