@@ -78,3 +78,42 @@ const newObj2 = Object.seal(obj2);
 newObj2.taille = "Très grand"; // modification OK
 newObj2.hobby = "Moto"; // cet ajout ne fonctionnera pas
 console.log(newObj2);
+
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+// Construire des Objets
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+// Fonction Constructeur
+// -------------------------------------------------------------------
+
+function User(nom, ville) {
+    this.name = nom;
+    this.city = ville;
+
+    this.getCity = function () {
+        console.log(`${this.name} habite à ${this.city}`);
+    };
+}
+
+const user1 = new User("Sam", "Chiang Mai");
+const user2 = new User("Sam", "Bangkok");
+
+user1.getCity();
+user2.getCity();
+
+// -------------------------------------------------------------------
+// Factory Function
+// -------------------------------------------------------------------
+
+function otherUsers(nom, ville) {
+    return {
+        name: nom,
+        city: ville,
+    };
+}
+
+const user3 = otherUsers("Sam", "Rayong");
+console.log(user3);
