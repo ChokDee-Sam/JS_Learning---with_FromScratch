@@ -117,3 +117,88 @@ function otherUsers(nom, ville) {
 
 const user3 = otherUsers("Sam", "Rayong");
 console.log(user3);
+
+// -------------------------------------------------------------------
+// Les Classes
+// -------------------------------------------------------------------
+
+class Utilisateur {
+    constructor(pseudo, ville) {
+        this.name = pseudo;
+        this.city = ville;
+    }
+    sayMyName = function () {
+        console.log(`Bonjour, je suis ${this.name}.`);
+    };
+}
+
+const user4 = new Utilisateur("Sam", "Phayao");
+user4.sayMyName();
+
+// -------------------
+// Ajout de Prototype
+// -------------------
+
+Utilisateur.prototype.sayCity = function () {
+    console.log(`J'habite à ${this.city}`);
+};
+
+console.log(user4);
+user4.sayCity();
+
+// ----------------------------
+// Ajout multiple de Prototype
+// ----------------------------
+
+Object.assign(Utilisateur.prototype, {
+    method1() {
+        // Ma méthode
+    },
+    method2() {
+        // Ma méthode
+    },
+});
+
+console.log(user4);
+
+// -------------------------------------------------------------------
+// L'Héritage
+// -------------------------------------------------------------------
+
+class Animal {
+    constructor(nom, age) {
+        this.name = nom;
+        this.age = age;
+    }
+    saySomething(texte) {
+        console.log(this.name + " dit : " + texte);
+      }
+}
+
+const chien = new Animal('Coco', 5)
+console.log(chien)
+chien.saySomething('wouf')
+
+// -------------------------------------
+
+class Dog extends Animal {
+    aboiement() {
+        console.log('Wouf Wouf !')
+    }
+}
+
+const coco = new Dog('Coco', 5)
+console.log(coco)
+
+// -------------------------------------
+
+Object.assign(Dog.prototype, {
+    method1() {
+        // Ma méthode
+    },
+    method2() {
+        // Ma méthode
+    },
+});
+
+// -------------------------------------
