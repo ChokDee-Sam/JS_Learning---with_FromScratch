@@ -35,13 +35,13 @@ console.log("pseudo" in obj);
 // -------------------------------------------------------------------
 
 // Parcourir l'Objet
-for (const abc in obj) {
-    console.log(abc); // affiche le nom chaque propriété
+for (const xyz in obj) {
+    console.log(xyz); // affiche le nom chaque propriété
 }
 
 // Parcourir l'objet avec une syntaxe permettant la concaténation [ ]
-for (const abc in obj) {
-    console.log(abc + " : " + obj[abc]); // affiche les valeurs de chaque propriété
+for (const xyz in obj) {
+    console.log(xyz + " : " + obj[xyz]); // affiche les valeurs de chaque propriété
 }
 
 // -------------------------------------------------------------------
@@ -189,6 +189,7 @@ class Dog extends Animal {
 
 const coco = new Dog('Coco', 5)
 console.log(coco)
+coco.aboiement()
 
 // -------------------------------------
 
