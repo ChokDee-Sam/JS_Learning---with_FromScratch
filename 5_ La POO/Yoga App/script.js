@@ -72,6 +72,7 @@ const page = {
                 />
                 <span>min</span>
             </div>
+            <img src="img/${exo.pic}.png" alt="image d'une position de yoga">
         </li>
             `
             )
