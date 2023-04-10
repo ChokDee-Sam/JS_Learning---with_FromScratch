@@ -73,6 +73,7 @@ const page = {
                 <span>min</span>
             </div>
             <img src="img/${exo.pic}.png" alt="image d'une position de yoga">
+            <i class="fas fa-arrow-alt-circle-left arrow" data-pic=${exo.pic}></i>
         </li>
             `
             )
