@@ -35,12 +35,32 @@ class Exercice {}
 // Cette fonction sera dans 3 méthodes différentes
 
 const utils = {
+    // -------------------------- Contenu des Vues --------------------------
     pageContent: function (title, content, btn) {
         document.querySelector("h1").innerHTML = title;
         main.innerHTML = content;
         document.querySelector(".btn-container").innerHTML = btn;
     },
+
+    // -------------------------- Gestion des minutes --------------------------
+    handleEventMinutes: function () {
+        document.querySelectorAll('input[type="number"]').forEach((element) => {
+            element.addEventListener("input", (e) => {
+                exerciceArray.map((exo) => {
+                    // console.log('test')
+                    if (exo.pic == e.target.id) {
+                        exo.min = parseInt(e.target.value);
+                        console.log(exerciceArray);
+                    }
+                });
+            });
+        });
+    },
+
+
 };
+
+console.log();
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
@@ -54,6 +74,7 @@ const utils = {
 
 //
 const page = {
+    // -------------------------- Première Vue --------------------------
     lobby: function () {
         let mapArray = exerciceArray
             .map(
@@ -86,12 +107,16 @@ const page = {
             `<ul>${mapArray}</ul>`, // on ajoute le UL ici car on en veut 1 seul, et pas plusieurs du .map
             "<button id='start'>Commencer<i class='far fa-play-circle'></i></button>"
         );
+
+        utils.handleEventMinutes();
     },
 
+    // -------------------------- Deuxième Vue --------------------------
     routine: function () {
         utils.pageContent("Routine", "Exercice avec chrono", null); // mettre null pour ne pas avoir de 'Undefined'
     },
 
+    // -------------------------- Troisième Vue --------------------------
     finish: function () {
         utils.pageContent(
             "C'est terminé !",
