@@ -57,7 +57,33 @@ const utils = {
         });
     },
 
+    // -------------------------- Gestion de l'ordre des exercices --------------------------
+    handleEventArrow: function () {
+        document.querySelectorAll(".arrow").forEach((arrow) => {
+            arrow.addEventListener("click", (e) => {
+                let position = 0;
 
+                exerciceArray.map((exo) => {
+                    if (exo.pic == e.target.dataset.pic && position !== 0) {
+
+                        //interverti les valeurs
+                        // La position de base 0 passe en -1, et la -1 passe en 0
+                        [exerciceArray[position], exerciceArray[position - 1]] =
+                            [
+                                exerciceArray[position - 1],
+                                exerciceArray[position],
+                            ];
+
+                        // On rappelle la Méthode pour refresh l'affichage
+                        page.lobby();
+                        
+                    } else {
+                        position++;
+                    }
+                });
+            });
+        });
+    },
 };
 
 console.log();
@@ -109,6 +135,7 @@ const page = {
         );
 
         utils.handleEventMinutes();
+        utils.handleEventArrow();
     },
 
     // -------------------------- Deuxième Vue --------------------------
