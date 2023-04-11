@@ -45,6 +45,7 @@ class Exercice {
         this.minutes = exerciceArray[this.index].min;
         this.seconds = 0;
     }
+    // ------------------------------
 
     updateCountdown() {
         this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
@@ -52,6 +53,7 @@ class Exercice {
         setTimeout(() => {
             if (this.minutes === 0 && this.seconds === "00") {
                 this.index++;
+                this.ring()
                 if (this.index < exerciceArray.length) {
                     this.minutes = exerciceArray[this.index].min;
                     this.seconds = 0;
@@ -75,8 +77,14 @@ class Exercice {
             <img src="img/${exerciceArray[this.index].pic}.png">
             <div>${this.index + 1} / ${exerciceArray.length}</div>
         </div>
-        
         `);
+    }
+    // ------------------------------
+
+    ring() {
+        const audio = new Audio() // objet natif JS
+        audio.src = "ring.mp3"
+        audio.play()
     }
 }
 
