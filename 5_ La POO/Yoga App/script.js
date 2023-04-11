@@ -6,10 +6,13 @@ console.log(main);
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
-// C'est la base des exercices, avec laquelle on choisira
-// l'ordre des exercices, les exercices à supprimer, et les minutes à modifier
+let exerciceArray = [];
 
-let exerciceArray = [
+// --------------------------------------------------------------
+// --------------------------------------------------------------
+// C'est la base des à réinjecter si on souhaite faire un reset
+
+let basicArray = [
     { pic: 0, min: 1 },
     { pic: 1, min: 1 },
     { pic: 2, min: 1 },
@@ -23,6 +26,16 @@ let exerciceArray = [
 ];
 
 // ------------------------------------------------------------------
+// ------------------------------------------------------------------
+// Lancer une fonction anonyme au démarrage, pour checker le local Storage
+
+(() => {
+    localStorage.exercices
+        ? (exerciceArray = JSON.parse(localStorage.exercices)) // passe du JSON au texte JS
+        : (exerciceArray = basicArray);
+})();
+
+// ----------------------------- -------------------------------------
 // ------------------------------------------------------------------
 // On instanciera cette Classe par la suite
 
@@ -55,7 +68,7 @@ const utils = {
                     // console.log('test')
                     if (exo.pic == e.target.id) {
                         exo.min = parseInt(e.target.value);
-                        console.log(exerciceArray);
+                        this.store(); // 'this', car on est dans la const 'utils'
                     }
                 });
             });
@@ -83,6 +96,7 @@ const utils = {
 
                         // On rappelle la Méthode pour refresh l'affichage
                         page.lobby();
+                        this.store(); // 'this', car on est dans la const 'utils'
                     } else {
                         position++;
                     }
@@ -113,12 +127,32 @@ const utils = {
 
                 exerciceArray = newArr;
                 page.lobby();
-            }); 
+                this.store(); // 'this', car on est dans la const 'utils'
+            });
         });
     },
-};
 
-console.log();
+    // -----------------------------------------------------------------------------------
+    // -------------------------- Reboot l'application à sa base --------------------------
+    // -----------------------------------------------------------------------------------
+
+    reboot: function () {
+        exerciceArray = basicArray;
+        page.lobby();
+        this.store(); // 'this', car on est dans la const 'utils'
+    },
+
+    // -----------------------------------------------------------------------------------
+    // -------------------------- Permet de sauvegarder en auto --------------------------
+    // -----------------------------------------------------------------------------------
+
+    // Permet à l'utilisateur de conserver sa liste, son ordre, et ses timings
+    // On utilise le JSON.stringify()
+
+    store: function () {
+        localStorage.exercices = JSON.stringify(exerciceArray);
+    },
+};
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
@@ -173,6 +207,7 @@ const page = {
         utils.handleEventMinutes();
         utils.handleEventArrow();
         utils.deleteItem();
+        reboot.addEventListener("click", () => utils.reboot());
     },
 
     // ------------------------------------------------------------------
