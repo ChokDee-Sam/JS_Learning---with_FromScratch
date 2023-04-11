@@ -52,7 +52,13 @@ class Exercice {
         setTimeout(() => {
             if (this.minutes === 0 && this.seconds === "00") {
                 this.index++;
-                this.updateCountdown();
+                if (this.index < exerciceArray.length) {
+                    this.minutes = exerciceArray[this.index].min;
+                    this.seconds = 0;
+                    this.updateCountdown();
+                } else {
+                    return page.finish();
+                }
             } else if (this.seconds === "00") {
                 this.minutes--;
                 this.seconds = 59;
