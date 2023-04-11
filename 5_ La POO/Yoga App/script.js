@@ -22,27 +22,32 @@ let exerciceArray = [
     { pic: 9, min: 1 },
 ];
 
-// --------------------------------------------------------------
-// --------------------------------------------------------------
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
 // On instanciera cette Classe par la suite
 
 class Exercice {}
 
-// --------------------------------------------------------------
-// --------------------------------------------------------------
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
 // Contient toutes les fonctions utiles au projet
 // La logique pour créer nos Pages (nos vues), grace au contenu des différentes propriétés
 // Cette fonction sera dans 3 méthodes différentes
 
 const utils = {
+    // ----------------------------------------------------------------------
     // -------------------------- Contenu des Vues --------------------------
+    // ----------------------------------------------------------------------
+
     pageContent: function (title, content, btn) {
         document.querySelector("h1").innerHTML = title;
         main.innerHTML = content;
         document.querySelector(".btn-container").innerHTML = btn;
     },
-
+    // -------------------------------------------------------------------------
     // -------------------------- Gestion des minutes --------------------------
+    // -------------------------------------------------------------------------
+
     handleEventMinutes: function () {
         document.querySelectorAll('input[type="number"]').forEach((element) => {
             element.addEventListener("input", (e) => {
@@ -57,7 +62,10 @@ const utils = {
         });
     },
 
+    // --------------------------------------------------------------------------------------
     // -------------------------- Gestion de l'ordre des exercices --------------------------
+    // --------------------------------------------------------------------------------------
+
     handleEventArrow: function () {
         document.querySelectorAll(".arrow").forEach((arrow) => {
             arrow.addEventListener("click", (e) => {
@@ -65,7 +73,6 @@ const utils = {
 
                 exerciceArray.map((exo) => {
                     if (exo.pic == e.target.dataset.pic && position !== 0) {
-
                         //interverti les valeurs
                         // La position de base 0 passe en -1, et la -1 passe en 0
                         [exerciceArray[position], exerciceArray[position - 1]] =
@@ -76,12 +83,37 @@ const utils = {
 
                         // On rappelle la Méthode pour refresh l'affichage
                         page.lobby();
-                        
                     } else {
                         position++;
                     }
                 });
             });
+        });
+    },
+
+    // -----------------------------------------------------------------------------------
+    // -------------------------- Supprimer une Card d'exercice --------------------------
+    // -----------------------------------------------------------------------------------
+
+    deleteItem: function () {
+        document.querySelectorAll(".deleteBtn").forEach((element) => {
+            element.addEventListener("click", (e) => {
+                let newArr = [];
+
+                // On va passer en revu le contenu de exerciceArray
+                // Chaque contenu qui ne correspond pas au dataset de la Card sur laquelle on a cliqué
+                // On envoi ce contenu dans un nouvel Array, qui deviendra notre nouvel exerciceArray
+                // note perso : pourquoi faire compliquer, plutôt qu'un delete ?
+
+                exerciceArray.map((exo) => {
+                    if (exo.pic != e.target.dataset.pic) {
+                        newArr.push(exo);
+                    }
+                });
+
+                exerciceArray = newArr;
+                page.lobby();
+            }); 
         });
     },
 };
@@ -90,6 +122,7 @@ console.log();
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
+
 // Dans une variable, on crée un Objet, qui aura 3 Fonctions (donc 3 Méthodes)
 // Chaque Méthode appellera la même Fonction à extérieure, mais avec des propriétés différentes
 
@@ -100,7 +133,10 @@ console.log();
 
 //
 const page = {
+    // ------------------------------------------------------------------
     // -------------------------- Première Vue --------------------------
+    // ------------------------------------------------------------------
+
     lobby: function () {
         let mapArray = exerciceArray
             .map(
@@ -136,14 +172,21 @@ const page = {
 
         utils.handleEventMinutes();
         utils.handleEventArrow();
+        utils.deleteItem();
     },
 
+    // ------------------------------------------------------------------
     // -------------------------- Deuxième Vue --------------------------
+    // ------------------------------------------------------------------
+
     routine: function () {
         utils.pageContent("Routine", "Exercice avec chrono", null); // mettre null pour ne pas avoir de 'Undefined'
     },
 
-    // -------------------------- Troisième Vue --------------------------
+    // ------------------------------------------------------------------
+    // -------------------------- Troisième Vue -------------------------
+    // ------------------------------------------------------------------
+
     finish: function () {
         utils.pageContent(
             "C'est terminé !",
