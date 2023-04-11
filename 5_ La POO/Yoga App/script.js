@@ -35,11 +35,44 @@ let basicArray = [
         : (exerciceArray = basicArray);
 })();
 
-// ----------------------------- -------------------------------------
 // ------------------------------------------------------------------
-// On instanciera cette Classe par la suite
+// ------------------------------------------------------------------
+// Affichera la vue/page Routine, avec un chrono, et un compteur d'exercice
 
-class Exercice {}
+class Exercice {
+    constructor() {
+        this.index = 0;
+        this.minutes = exerciceArray[this.index].min;
+        this.seconds = 0;
+    }
+
+    updateCountdown() {
+        this.seconds = this.seconds < 10 ? "0" + this.seconds : this.seconds;
+
+        setTimeout(() => {
+            if (this.minutes === 0 && this.seconds === "00") {
+                this.index++;
+                this.updateCountdown();
+            } else if (this.seconds === "00") {
+                this.minutes--;
+                this.seconds = 59;
+                this.updateCountdown();
+            } else {
+                this.seconds--;
+                this.updateCountdown();
+            }
+        }, 10);
+
+        return (main.innerHTML = `
+        <div class="exercice-container">
+            <p>${this.minutes} : ${this.seconds}</p>
+            <img src="img/${exerciceArray[this.index].pic}.png">
+            <div>${this.index + 1} / ${exerciceArray.length}</div>
+        </div>
+        
+        `);
+    }
+}
 
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
@@ -208,6 +241,7 @@ const page = {
         utils.handleEventArrow();
         utils.deleteItem();
         reboot.addEventListener("click", () => utils.reboot());
+        start.addEventListener("click", () => this.routine()); // passe à la deuxième Vue/Page
     },
 
     // ------------------------------------------------------------------
@@ -215,7 +249,9 @@ const page = {
     // ------------------------------------------------------------------
 
     routine: function () {
-        utils.pageContent("Routine", "Exercice avec chrono", null); // mettre null pour ne pas avoir de 'Undefined'
+        const exercice = new Exercice();
+
+        utils.pageContent("Routine", exercice.updateCountdown(), null); // mettre null pour ne pas avoir de 'Undefined'
     },
 
     // ------------------------------------------------------------------

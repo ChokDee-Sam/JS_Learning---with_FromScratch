@@ -1,3 +1,10 @@
 Checker DataSet data-set ??
 
 id / bouton / input / id sur icone = pas besoin déclarer en variable JS
+
+Penser parfois à bien appeler une fonction/methode avec () 
+Sans ça, elle s'affichera uniquement
+
+Penser parfois à return()
+(si undefined)
+à clarifier par la suite...
