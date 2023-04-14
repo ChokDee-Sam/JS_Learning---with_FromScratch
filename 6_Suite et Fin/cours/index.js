@@ -1,6 +1,8 @@
-// -------------------------------------------------------
+// "use strict";
+
+// _______________________________________________________
 // CANVAS
-// -------------------------------------------------------
+// _______________________________________________________
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -27,10 +29,73 @@ function draw() {
     ctx.lineTo(100, 75);
     ctx.lineTo(100, 175);
     ctx.fill();
-    
-    setTimeout(() => {
-        
-    }, 2000);
+
+    setTimeout(() => {}, 2000);
 }
 
-window.addEventListener('load', draw)
+window.addEventListener("load", draw);
+
+// _______________________________________________________
+// TRY AND CATCH
+// _______________________________________________________
+
+// ------------------------------------
+// La base
+// ------------------------------------
+
+try {
+    // Test un block de code
+    maFonction();
+} catch (err) {
+    // console.log(err);
+}
+
+// ------------------------------------
+// Exemple
+// ------------------------------------
+
+function isValidJSON(txt) {
+    try {
+        JSON.parse(txt);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+console.log(isValidJSON("OH LALA !!"));
+
+// --------------------------------------
+// Finally : s'exécute après Try ou Catch
+// --------------------------------------
+
+try {
+    // Test un block de code
+    // maFonction();
+} catch (err) {
+    console.log(err);
+} finally {
+    console.log("On est arrivé au bout !");
+}
+
+// --------------------------------------
+// Throw : signal une erreur ou une exception
+// (alors que 'return' sort de la fonction et retourne une valeur)
+// --------------------------------------
+
+function isNumber(num) {
+    if (isNaN(num)) {
+        throw "Not a number !";
+    } else {
+        console.log("c'est un nombre");
+    }
+    // PLEIN DE CODE
+}
+
+// exemple
+try {
+    isNumber("2d");
+} catch (err) {
+    console.log("Erreur : " + err);
+}
+
