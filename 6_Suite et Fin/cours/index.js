@@ -99,3 +99,12 @@ try {
     console.log("Erreur : " + err);
 }
 
+// _______________________________________________________
+// STRICT MODE
+// _______________________________________________________
+
+// Voir ligne 1
+// Évite les erreurs, car moins permissive (bonne pratique)
+
+voiture = "Toyota";
+// console.log(voiture) // erreur si strict mode
