@@ -69,7 +69,7 @@ class Exercice {
                 this.seconds--;
                 this.updateCountdown();
             }
-        }, 10);
+        }, 1000);
 
         return (main.innerHTML = `
         <div class="exercice-container">
@@ -278,6 +278,8 @@ const page = {
             "<button id='start'>Recommencer</button>",
             "<button id='reboot' class='btn-reboot'>Réinitialiser <i class='fas fa-times-circle'></i></button>"
         );
+        start.addEventListener('click', () => this.routine())
+        reboot.addEventListener('click', () => utils.reboot())
     },
 };
 
