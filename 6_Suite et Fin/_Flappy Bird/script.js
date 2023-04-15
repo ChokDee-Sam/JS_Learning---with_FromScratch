@@ -16,14 +16,36 @@ const size = [51, 36]; // largeur, Hauteur
 const jump = -11.5;
 const cTenth = canvas.width / 10; //  pour placer l'oiseau à 1 /10ème du Canvas
 
+// Settings : Pipes
+
+const pipeWidth = 78;
+const pipeGap = 270;
+const pipeLoc = () =>
+    Math.random() * (canvas.height - (pipeGap + pipeWidth) - pipeWidth) +
+    pipeWidth;
+
 // Settings : Dynamic
 let index = 0,
     bestScore = 0,
     currentScore = 0,
     pipes = [], // les poteaux
-    flight = 0,
+    flight,
     flyHeight; // position de l'oiseau (en hauteur)
 
+//
+
+const setup = () => {
+    currentScore = 0;
+    flight = jump;
+    // set initial flyHeight (middle of screen - size of the bird)
+    flyHeight = canvas.height / 2 - size[1] / 2;
+
+    // setup first 3 pipes
+    pipes = Array(3)
+        .fill()
+        .map((a, i) => [canvas.width + i * (pipeGap + pipeWidth), pipeLoc()]);
+    console.log("heu");
+};
 //-------------------------------------------------------------------------------------
 
 //
@@ -58,7 +80,7 @@ const render = () => {
         img,
         0,
         0,
-        canvas.width - 5, // pour un meilleur rendu
+        canvas.width, // -5 pour un meilleur rendu
         canvas.height,
         -((index * (speed / 2)) % canvas.width),
         0,
@@ -80,6 +102,9 @@ const render = () => {
             flyHeight,
             ...size
         );
+
+        flight += gravity;
+        flyHeight = Math.min(flyHeight + flight, canvas.height - size[1]);
     } else {
         ctx.drawImage(
             img,
@@ -100,13 +125,57 @@ const render = () => {
         ctx.fillText("Cliquez pour jouer", 48, 535);
         ctx.font = "bold 30px courier";
     }
+
+    // -----------
+    // Les Tuyaux
+    // -----------
+
+    if (gamePlaying) {
+        pipes.map((pipe) => {
+            pipe[0] -= speed;
+
+            // --------------
+            // Tuyaux du Haut
+            // --------------
+
+            ctx.drawImage(
+                img,
+                432,
+                588 - pipe[1],
+                pipeWidth,
+                pipe[1],
+                pipe[0],
+                0,
+                pipeWidth,
+                pipe[1]
+            );
+
+            // --------------
+            // Tuyaux du Bas
+            // --------------
+            ctx.drawImage(
+                img,
+                432 + pipeWidth,
+                108,
+                pipeWidth,
+                canvas.height - pipe[1] + pipeGap,
+                pipe[0],
+                pipe[1] + pipeGap,
+                pipeWidth,
+                canvas.height - pipe[1] + pipeGap
+            );
+        });
+    }
+
     // ----------------------
     // ----------------------
 
     window.requestAnimationFrame(render);
 };
-img.onload = render;
 // ----------------------
 // ----------------------
 
+setup();
+img.onload = render;
 document.addEventListener("click", () => (gamePlaying = true));
+window.onclick = () => (flight = jump);
