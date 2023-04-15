@@ -164,11 +164,46 @@ const render = () => {
                 pipeWidth,
                 canvas.height - pipe[1] + pipeGap
             );
+
+            if (pipe[0] <= -pipeWidth) {
+                currentScore++;
+                bestScore = Math.max(bestScore, currentScore);
+
+                // -------------------------------------------
+                // retirer les tuyaux + en créer des nouveaux
+                // -------------------------------------------
+
+                pipes = [
+                    ...pipes.slice(1),
+                    [
+                        pipes[pipes.length - 1][0] + pipeGap + pipeWidth,
+                        pipeLoc(),
+                    ],
+                ];
+            }
+
+            // -------------------------------------------
+            // -------------------------------------------
+            // Si collision = Game Over
+
+            if (
+                [
+                    pipe[0] <= cTenth + size[0],
+                    pipe[0] + pipeWidth >= cTenth,
+                    pipe[1] > flyHeight ||
+                        pipe[1] + pipeGap < flyHeight + size[1],
+                ].every((elem) => elem)
+            ) {
+                gamePlaying = false;
+                setup();
+            }
         });
     }
 
     // ----------------------
     // ----------------------
+
+    document.getElementById("bestScore").innerHTML = `Meilleur : ${bestScore}`;
 
     window.requestAnimationFrame(render);
 };
