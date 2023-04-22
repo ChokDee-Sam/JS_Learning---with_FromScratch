@@ -2,7 +2,7 @@
 // Rappel des types de données
 // -----------------------------------------------
 
-let string = "chaine de car";
+let string = "chaîne de car";
 let number = 10;
 let boolean = true;
 let maVariable;
@@ -16,13 +16,13 @@ let maVariable;
 let array = ["Bordeaux", "Toulouse", "Nantes"];
 // console.log(array);
 
-// selectionne le mot
+// sélectionne le mot
 // console.log(array[0]);
 
-// selectionne la lettre dans le mot
+// sélectionne la lettre dans le mot
 // console.log(array[0][7]);
 
-let array2 = ["Bordeau", 24, true, [1, 2], { nom: "Denis" }];
+let array2 = ["Bordeaux", 24, true, [1, 2], { nom: "Denis" }];
 console.log(array2);
 // pour rentrer dans un objet, on utilise un point
 console.log(array2[4].nom);
@@ -117,7 +117,7 @@ do {
 } while (d < 5);
 
 // ------
-// For
+// FOR...OF
 // ------
 
 // // dans la Variable data, qui contient un tableau, qui lui même contient des objets
