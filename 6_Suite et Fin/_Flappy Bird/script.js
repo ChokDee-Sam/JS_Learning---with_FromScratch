@@ -10,10 +10,10 @@ img.src = "./media/flappy-bird-set.png";
 // Settings : Static
 
 let gamePlaying = false; // affiche ou non l'écran d'accueil
-const gravity = 0.5;
-const speed = 6.2;
+const gravity = 0.4;
+const speed = 3.2;
 const size = [51, 36]; // largeur, Hauteur
-const jump = -11.5;
+const jump = -10.5;
 const cTenth = canvas.width / 10; //  pour placer l'oiseau à 1 /10ème du Canvas
 
 // Settings : Pipes
