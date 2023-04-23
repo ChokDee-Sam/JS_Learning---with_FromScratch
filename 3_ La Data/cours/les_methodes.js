@@ -16,31 +16,33 @@ console.log(eval("1" + 2));
 // Transforme le String en Number
 console.log(eval(parseInt("1") + 2));
 
+// -----------------------------------------------
+
 // Penser à utiliser le typeof pour savoir la nature
 console.log(typeof parseInt("100"));
 
 // Permet de savoir si ce n'est pas un nombre (is NOT a NUMBER)
 console.log(isNaN(phraseExemple));
 
-// Permet de connaitre la longueur/profondeur
+// Permet de connaître la longueur/profondeur
 console.log(phraseExemple.length);
 
-// la lenght va de 0 à 38
+// Affiche la lettre à la 38eme position (départ de 0 car array)
 console.log(phraseExemple[38]);
 
 // la variable va de 1 à 39
-// la LENGHT n'est pas égale à l'index d'un tableau
+// la LENGTH n'est pas égale à l'index d'un tableau
 // subtilité : l'index commence à zéro, et la length à 1
 console.log(phraseExemple[phraseExemple.length - 1]);
 
-// Permet de connaitre l'index d'un mot, ou d'une lettre dans un element
+// Permet de connaître l'index d'un mot, ou d'une lettre dans un element
 console.log(phraseExemple.indexOf("orienté"));
 
 // Retourne -1 si inexistant
 console.log(phraseExemple.indexOf("x"));
 
 // Permet de couper le contenu d'un element
-// le chiffre entre parenthese indique le nombre de lettre à retirer/couper
+// le chiffre entre parenthèse indique le nombre de lettre à retirer/couper
 let NewPhraseExemple = phraseExemple.slice(2);
 console.log(NewPhraseExemple);
 // Mettre 2 chiffres permet de tout retirer avant et après
@@ -120,7 +122,7 @@ console.log(newArray);
 let newArray2 = [...array1, ...array2];
 console.log(newArray2);
 
-// Permet de créer une chaine de caractère
+// Permet de créer une chaîne de caractère
 // issu des elements du tableau
 // en choisissant comment les joindre
 console.log(array1.join("-"));
@@ -128,13 +130,13 @@ console.log(array1.join("-"));
 // Couper le nombre d'elements de tableau
 console.log(newArray2.slice(2));
 // Coupe ce qu'il y a en dehors de ces 2 chiffres
-// Jusqu'où ça enleve, puis jusqu'où ça garde
+// Jusqu'où ça enlève, puis jusqu'où ça garde
 console.log(newArray2.slice(2, 4));
 
 // Trouve l'index du mot qu'on recherche
 console.log(newArray2.indexOf("Javascript"));
 
-// À chaque tour de boucle, enumere chaque element 1 par 1
+// À chaque tour de boucle, énumère chaque element 1 par 1
 array1.forEach((languages) => console.log(languages));
 
 // À chaque tour de boucle, vérifie dans CHAQUE ELEMENT s'il y a un mot/lettre "défini"
@@ -153,17 +155,19 @@ let pop = array1.pop();
 console.log(array1);
 console.log(pop);
 
-// Retire les élements entre un intervale, puis s'ajoute un nouvel element
+// Retire les éléments entre un intervale, puis s'ajoute un nouvel element
 console.log(newArray);
 const bidule = newArray.splice(0, 2, "Three.JS");
 console.log(newArray);
 console.log(bidule);
 
-// Retire les élements entre un intervale, puis s'ajoute un nouvel element avec Spread
+// Retire les éléments entre un intervale, puis s'ajoute un nouvel element avec Spread
 const cities = ["Bangkok", "Phuket", "Chiang Mai", "Chiang Rai", "Phayao"];
 console.log(cities);
 const bidule2 = cities.splice(0, 2, ...array2);
+console.log(bidule2);
 console.log(cities);
+
 
 // IMPORTANT
 // Calculer le nombre total des éléments
